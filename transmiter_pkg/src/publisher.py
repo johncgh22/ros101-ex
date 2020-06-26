@@ -1,4 +1,4 @@
-#l/usr/bin/env/python 
+#!/usr/bin/env python
 
 import rospy
 from receiver_pkg.msg import Status
@@ -7,7 +7,7 @@ def talker():
     pub = rospy.Publisher('status_info', Status ,queue_size=10)
     rospy.init_node('my_talker', anonymous=True)
     r = rospy.Rate(10)  #10 Hz
-    msg = Stauts()
+    msg = Status()
     msg.name = 'Ok'
     msg.code = 100
 

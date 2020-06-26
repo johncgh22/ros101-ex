@@ -1,4 +1,4 @@
-#l/usr/bin/env/python 
+#!/usr/bin/env python
 
 import rospy
 from receiver_pkg.msg import Status
