@@ -2,7 +2,7 @@
 
 import rospy
 from nav_msgs.msg import Odometry
-from geometry_msgs import Twist, Point
+from geometry_msgs.msg import Twist, Point
 from tf.transformations import euler_from_quaternion
 from math import atan2
 
