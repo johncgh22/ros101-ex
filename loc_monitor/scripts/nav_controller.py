@@ -27,6 +27,11 @@ def main():
 
     sub = rospy.Subscriber('/odom', Odometry, controller_callback)
     pub = rospy.Publisher('cmd_vel', Twist, queue_size=1)
+
+    goal1 = Point()
+    goal1.x = 4
+    goal1.y = 0
+
     goal = Point()
     goal.x = 5
     goal.y = 5
@@ -34,9 +39,12 @@ def main():
     speed = Twist()
     r = rospy.Rate(4)
 
+    current_goal = goal1
+
     while not rospy.is_shutdown():
-        dx = goal.x - x
-        dy = goal.x - y
+
+        dx = current_goal.x - x
+        dy = current_goal.x - y
         alpha = atan2(dy, dx)
         speed.linear.x = 0.0
         speed.angular.z = 0.0
@@ -46,8 +54,14 @@ def main():
             speed.linear.x = 0.0
             speed.angular.z = 0.3  # rad/seg
         else:
-            speed.linear.x = 0.5  # m/seg
-            speed.angular.z = 0.0
+            if (x < current_goal.x and y < current_goal.y):
+                speed.linear.x = 0.5  # m/seg
+                speed.angular.z = 0.0
+            elif current_goal == goal1:
+                current_goal = goal1
+            else:
+                speed.linear.x = 0.0
+                speed.angular.z = 0.0 
 
         pub.publish(speed)
         r.sleep()
