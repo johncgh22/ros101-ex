@@ -6,7 +6,7 @@ from geometry_msgs.msg import Point
 from std_srvs.srv import Empty
 from gazebo_msgs.srv import (GetWorldProperties, GetModelState)
 
-def GetWorldProperties():
+def getWorldProperties():
     try:
         get_world_properties = rospy.ServiceProxy("/gazebo/get_world_properties", GetWorldProperties)
         wp = get_world_properties()
