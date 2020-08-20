@@ -39,7 +39,7 @@ def get_model_pose(model_name):
 
 def main():
     no_objects = ['ground_plane', 'mobile_base']
-    wp = GetWorldProperties()
+    wp = getWorldProperties()
     print wp.model_names
     for model in wp.model_names:
         if model not in no_objects:
