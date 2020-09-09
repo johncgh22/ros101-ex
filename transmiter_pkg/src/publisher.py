@@ -26,11 +26,11 @@ def talker2():
     msg2.name = 'Se esta publicando el numero %d'%counter
     counter += 1 
 
-        while not rospy.is_shutdown():
+    while not rospy.is_shutdown():
         rospy.loginfo(msg2)
         pub.publish(msg2)
         r.sleep()    
 
 if __name__=='__main__':
     talker()
-    talker2()
+    #talker2()

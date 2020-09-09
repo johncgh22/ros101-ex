@@ -14,10 +14,10 @@ def callback2(data):
 
 def listener():
     rospy.init_node('my_listener', anonymous=True)
-    rospy.init_node('my_second_listener', anonymous=True)
+    # rospy.init_node('my_second_listener', anonymous=True)
 
     rospy.Subscriber('status_info', Status, callback)
-    rospy.Subscriber('status2', prueba_status2, callback2)
+    #rospy.Subscriber('status2', prueba_status2, callback2)
 
     rospy.spin()
 
