@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 import rospy
 from geometry_msgs.msg import Point
@@ -20,8 +20,8 @@ class GazeboUtils():
             else:
                 rospy.logwarn(wp.status_message)    
                 return None
-        except rospy.ServiceException, e:
-            print "/gazebo/get_world_properties %s"%e
+        except rospy.ServiceException as e:
+            print ("/gazebo/get_world_properties %s"%e)
 
     def getModelState(self, model_name, relative_entity_name='world'):
         try:
@@ -30,10 +30,10 @@ class GazeboUtils():
             if ms.success:
                 return ms
             else:
-                print ms.status_message
+                print (ms.status_message)
                 return None
-        except rospy.ServiceException, e:
-            print "/gazebo/get_model_state %s"%e
+        except rospy.ServiceException as e:
+            print ("/gazebo/get_model_state %s"%e)
 
     def get_model_pose(self, model_name):
         ms = getModelState(model_name)
