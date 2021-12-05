@@ -36,7 +36,7 @@ class GazeboUtils():
             print ("/gazebo/get_model_state %s"%e)
 
     def get_model_pose(self, model_name):
-        ms = getModelState(model_name)
+        ms = GetModelState(model_name)
         if ms:
             return ms.pose
         else:
